@@ -31,26 +31,28 @@ const app = express();
 //   }
 // );
 
-app.get("/admin/getAllData", (req, res) => {
-  // Logic of checking if the request is authorized
-  const token = "XYZABCDEF";
+////////////////////////////////////////////////////
+
+// Handle Auth Middleware for all GET POST,....requests
+app.use("/admin", (req, res, next) => {
+  console.log("Admin auth is getting checked!");
+  const token = "xyz";
   const isAdminAuthorized = token === "xyz";
-  if (isAdminAuthorized) {
-    res.send("All Data sent");
+  if (!isAdminAuthorized) {
+    res.status(401).send("Unauthorized request");
   } else {
-    res.status(401).send("unauthorized user");
+    next();
   }
 });
 
+app.get("/user", (req, res) => {
+  res.send("user Data Sent");
+});
+app.get("/admin/getAllData", (req, res) => {
+  res.send("All Data sent");
+});
 app.get("/admin/deleteUser", (req, res) => {
-  // Logic of checking if the request is authorized
-  const token = "XYZABCDEF";
-  const isAdminAuthorized = token === "xyz";
-  if (!isAdminAuthorized) {
-    res.send("user is not authorized");
-  } else {
-    res.status(401).send("unauthorized user");
-  }
+  res.send("user is not authorized");
 });
 
 app.listen(3000, () => {

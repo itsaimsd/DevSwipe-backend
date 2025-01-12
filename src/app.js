@@ -36,20 +36,45 @@ const app = express();
 
 // Handle Auth Middleware for all GET POST,....requests
 
-app.use("/admin", adminAuth);
-app.get("/user/login", (req, res) => {
-  res.send("Login Succesfull");
+// app.use("/admin", adminAuth);
+// app.get("/user/login", (req, res) => {
+//   res.send("Login Succesfull");
+// });
+// app.get("/user/data", userAuth, (req, res) => {
+//   res.send("user Data Sent");
+// });
+// app.get("/admin/getAllData", (req, res) => {
+//   res.send("All Data sent");
+// });
+// app.get("/admin/deleteUser", (req, res) => {
+//   res.send("user is not authorized");
+// });
+
+/////////////////////////////////////
+
+app.use("/", (err, req, res, next) => {
+  if (err) {
+    // log your error
+    res.status(500).send("something went wrong");
+  }
 });
-app.get("/user/data", userAuth, (req, res) => {
-  res.send("user Data Sent");
-});
-app.get("/admin/getAllData", (req, res) => {
-  res.send("All Data sent");
-});
-app.get("/admin/deleteUser", (req, res) => {
-  res.send("user is not authorized");
+app.get("/getUserData", (req, res) => {
+  // Logic of DB call and get user Data
+
+  // try {
+  throw new Error("dhhf");
+  res.send("User Data Sent");
+  // } catch (err) {
+  res.status(500).send("Some Error contact support team");
+  // }
 });
 
+app.use("/", (err, req, res, next) => {
+  if (err) {
+    // log your error
+    res.status(500).send("something went wrong");
+  }
+});
 app.listen(3000, () => {
   console.log("server is successfully listening on port 3000.....");
 });

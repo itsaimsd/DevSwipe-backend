@@ -2,7 +2,6 @@ const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
 const User = require("./models/user");
-const user = require("./models/user");
 
 app.use(express.json());
 
@@ -44,6 +43,29 @@ app.get("/feed", async (req, res) => {
   try {
     const users = await User.find({});
     res.send(users);
+  } catch (err) {
+    res.status(400).send("something went wrong");
+  }
+});
+
+// delete the user by Id
+app.delete("/user", async (req, res) => {
+  const userId = req.body.userId;
+  try {
+    await User.findByIdAndDelete(userId);
+    res.send("User deleted successfully");
+  } catch (err) {
+    res.status(400).send("something went wrong");
+  }
+});
+
+// Update the data of the user
+app.patch("/user", async (req, res) => {
+  const userId = req.body.userId;
+  const data = req.body;
+  try {
+    await User.findByIdAndUpdate(userId, data);
+    res.send("User update succesfully");
   } catch (err) {
     res.status(400).send("something went wrong");
   }

@@ -66,7 +66,7 @@ app.get("/getUserData", (req, res) => {
   res.send("User Data Sent");
   // } catch (err) {
   res.status(500).send("Some Error contact support team");
-  // }
+  // } 
 });
 
 app.use("/", (err, req, res, next) => {

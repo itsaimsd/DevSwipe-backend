@@ -2,7 +2,7 @@
   "name": "dev-tinder",
   "version": "1.0.0",
   "description": "tinder for dev",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node src/app.js",
@@ -16,6 +16,7 @@
   "author": "Itsaimsd",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mongoose": "^8.9.4"
   }
 }

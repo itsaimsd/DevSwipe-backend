@@ -59,7 +59,7 @@ app.delete("/user", async (req, res) => {
   }
 });
 
-// Update the data of the user
+// Update the data of the user data
 app.patch("/user/:userId", async (req, res) => {
   const userId = req.params?.userId;
   const data = req.body;

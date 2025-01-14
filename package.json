@@ -16,6 +16,7 @@
   "author": "Itsaimsd",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.21.2",
     "mongoose": "^8.9.4",
     "validation": "^0.0.1",

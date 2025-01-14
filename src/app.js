@@ -32,6 +32,8 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+
+// Login API
 app.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
@@ -41,6 +43,10 @@ app.post("/login", async (req, res) => {
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (isPasswordValid) {
+      // Create a JWT Token
+
+      // Add the token to cookies and send the response back to the user
+      res.cookie("token", "kebjsbbhehfuytewyyaiwhefgvshgfrrdjbfvdheb");
       res.send("Login Succesfull!!!");
     } else {
       throw new Error("Invalid Credentials");
@@ -49,6 +55,13 @@ app.post("/login", async (req, res) => {
     res.status(400).send("ERROR : " + err.message);
   }
 });
+
+// Profile API
+app.get("/profile", async (req, res) => {
+  const cookies = req.cookies();
+  console.log(cookies);
+});
+
 // Get user by email
 app.get("/user", async (req, res) => {
   const userEmail = req.body.emailId;

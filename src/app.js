@@ -76,6 +76,8 @@ app.get("/profile", userAuth, async (req, res) => {
     res.status(400).send("ERROR : " + err.message);
   }
 });
+
+// Send Connection Request
 app.post("/sendConnectionRequest", userAuth, async (req, res) => {
   const user = req.user;
   // sending a connection request
@@ -93,3 +95,5 @@ connectDB()
   .catch((err) => {
     console.error("Database connot be connected", err);
   });
+
+

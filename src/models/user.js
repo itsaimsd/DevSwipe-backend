@@ -56,8 +56,8 @@ const userSchema = mongoose.Schema(
     },
     photoUrl: {
       type: String,
-      default:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQABqQIdskCD9BK0I81EbVfV9tTz320XvJ35A&s",
+      default: "https://cdn-icons-png.flaticon.com/512/21/21104.png",
+
       validate(value) {
         if (!validator.isURL(value)) {
           throw new Error("Invalid photo URL: " + value);
